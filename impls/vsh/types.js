@@ -11,28 +11,36 @@ class NilValue extends MalValue {
 }
 
 class List extends MalValue {
-  constructor(tokens) {
+  constructor(ast) {
     super();
-    this.tokens = tokens;
+    this.ast = ast;
   }
 
   pr_str(readableForm = false) {
     return (
-      "(" + this.tokens.map(pr_str).join(" ") + ")"
+      "(" + this.ast.map(pr_str).join(" ") + ")"
     );
+  }
+
+  isEmpty() {
+    return this.ast.length === 0
   }
 }
 
 class Vector extends MalValue {
-  constructor(tokens) {
+  constructor(ast) {
     super();
-    this.tokens = tokens;
+    this.ast = ast;
   }
 
   pr_str(readableForm = false) {
     return (
-      "[" + this.tokens.map(pr_str).join(" ") + "]"
+      "[" + this.ast.map(pr_str).join(" ") + "]"
     );
+  }
+
+  isEmpty() {
+    return this.ast.length === 0
   }
 }
 
